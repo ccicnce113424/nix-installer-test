@@ -1,0 +1,21 @@
+name: Build with nixbuild Quick Installer
+
+on:  
+  workflow_dispatch:
+    inputs:
+      pkgs:
+        description: 'Package to build'
+        required: true
+        default: 'github:daeuniverse/flake.nix#daed'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build
+    steps:
+      - name: Install Nix
+        uses: nixbuild/nix-quick-install-action@v30
+
+      - name: Build
+        run: |
+          nix build ${{ github.event.inputs.pkgs }}
