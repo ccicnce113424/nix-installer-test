@@ -18,5 +18,4 @@ jobs:
       - name: Update npins
         run: nix run nixpkgs#npins update
       
-      - run: pkgs/faf-client/update.sh
-      - run: pkgs/faf-client/update-src.sh
+      - run: pkgs/faf-client/update-src.sh -v
